@@ -15,10 +15,10 @@ class DataEduardoSeeder extends Seeder
     public function run()
     {
         $jsonFile = file_get_contents(app_path('Data/data.json'));
-        $data = json_decode($jsonFile)->REPORTE;
-        DB::table('data')
-            ->insert([
-                $data
-            ]);
+        $data = json_decode($jsonFile);
+        \Log::info($data);
+        foreach ($data as $row => $value) {
+            DB::table('data')->insert($value);
+        }
     }
 }
