@@ -15,8 +15,8 @@ class DataEduardoSeeder extends Seeder
     public function run()
     {
         $jsonFile = file_get_contents(app_path('Data/data.json'));
+        \Log::info($jsonFile);
         $data = json_decode($jsonFile);
-        \Log::info($data);
         foreach ($data as $row => $value) {
             DB::table('data')->insert($value);
         }
