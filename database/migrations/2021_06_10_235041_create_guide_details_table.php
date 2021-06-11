@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillElectronicGuideTable extends Migration
+class CreateGuideDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBillElectronicGuideTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_electronic_guide', function (Blueprint $table) {
+        Schema::create('guide_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('guide_id')->constrained();
-            $table->foreignId('bill_electronic_id')->constrained();
-            $table->string('description');
-            $table->string('observation');
-            $table->string('pucharse_order');
+            $table->foreignId('product_id')->constrained();
+            $table->integer('amount');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -34,6 +32,6 @@ class CreateBillElectronicGuideTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bill_electronic_guide');
+        Schema::dropIfExists('guide_details');
     }
 }

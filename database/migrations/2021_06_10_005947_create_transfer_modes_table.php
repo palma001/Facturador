@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGuidesTable extends Migration
+class CreateTransferModesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGuidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('guides', function (Blueprint $table) {
+        Schema::create('transfer_modes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->foreignId('user_created_id')->constrained('users');
@@ -30,6 +30,6 @@ class CreateGuidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guides');
+        Schema::dropIfExists('transfer_modes');
     }
 }
